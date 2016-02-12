@@ -22,5 +22,10 @@
   "homepage": "https://github.com/coderoad/mocha-coderoad#readme",
   "dependencies": {
     "mocha": "2.4.5"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.2.0",
+    "chai-spies": "^0.7.1"
   }
 }

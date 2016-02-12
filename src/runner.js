@@ -1,60 +1,75 @@
 "use strict";
 var utils_1 = require('./utils');
 var createRunner_1 = require('./createRunner');
-function runner(files, config, handleTestResult, handleLog) {
+var path = require('path');
+function runner(files, config, handleResult, handleLog) {
+    files = files.map(function (subArray) {
+        return subArray.map(function (test) {
+            return path.join(config.tutorialDir, test);
+        });
+    });
     var tests = utils_1.concatAll(files);
     var runner = createRunner_1.createRunner(config, tests);
-    runner.stdout.on('data', function (data) {
-        var result = {
-            pass: false,
-            position: 0,
-            failedAt: null,
-            failure: null
-        };
-        var signalMatch = new RegExp(utils_1.signal);
-        var match = signalMatch.exec(data);
-        if (!!match) {
-            var printed = data.toString().substring(0, match.index);
-            if (!!printed.length) {
-                var start = printed.substring(0, printed.length / 2);
-                var end = printed.substring(printed.length / 2, printed.length);
-                var message = '';
-                if (start === end) {
-                    message = start;
+    var result = {
+        pass: false,
+        taskPosition: 0,
+        failedAtFile: null,
+        msg: null
+    };
+    return new Promise(function (resolve, reject) {
+        runner.stdout.on('data', function (data) {
+            var signalMatch = new RegExp(utils_1.signal);
+            var match = signalMatch.exec(data);
+            if (!!match) {
+                var printed = data.toString().substring(0, match.index);
+                if (!!printed.length) {
+                    var start = printed.substring(0, printed.length / 2);
+                    var end = printed.substring(printed.length / 2, printed.length);
+                    var message = '';
+                    if (start === end) {
+                        message = start;
+                    }
+                    else {
+                        message = printed;
+                    }
+                    handleLog(message);
+                }
+                var testResultString = data.toString().substring(match.index + utils_1.signal.length);
+                var testResult = JSON.parse(JSON.stringify(testResultString));
+                if (typeof testResult === 'string') {
+                    testResult = JSON.parse(testResult);
+                }
+                if (testResult.failedAtFile) {
+                    result.pass = false;
+                    result.taskPosition = findFailureTestPosition(files, testResult.failedAtFile);
+                    result.msg = testResult.failures[0].msg;
+                    result.failedAtFile = testResult.failedAtFile;
                 }
                 else {
-                    message = printed;
+                    result.pass = true;
+                    result.taskPosition = files.length;
+                    result.msg = testResult.passes[testResult.passes.length - 1].msg;
                 }
-                handleLog(message);
-            }
-            var testResultString = data.toString().substring(match.index + 22);
-            var testResult = JSON.parse(testResultString);
-            if (!testResult.failed) {
-                result.pass = false;
-                result.failure = testResult.failures[0];
-                result.position = findFailureTestPosition(files, testResult.failedAt);
             }
             else {
-                result.pass = true;
-                result.position = files.length;
+                console.log('Result test data doesn\'t match signal string', data.toString());
             }
-        }
-        else {
-            console.log('Error with test', data);
-        }
-        handleTestResult(result);
-    });
-    runner.stderr.on('error', function (data) {
-        console.log('test error', data);
-    });
-    runner.on('close', function (code) {
-        if (code === 1) {
-            console.error('Error running test');
-        }
+            handleResult(result);
+        });
+        runner.stderr.on('data', function (data) {
+            console.log('test error', data.toString());
+        });
+        runner.on('close', function (code) {
+            if (code === 0) {
+                resolve(result);
+            }
+            else {
+                resolve(result);
+            }
+        });
     });
 }
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = runner;
+exports.runner = runner;
 function findFailureTestPosition(files, file) {
     for (var i = 0; i < files.length; i++) {
         if (files[i].indexOf(file) > -1) {

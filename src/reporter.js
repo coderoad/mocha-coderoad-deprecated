@@ -5,7 +5,7 @@ function reporter(runner) {
     var result = {
         passes: [],
         failures: [],
-        failedAt: null
+        failedAtFile: null
     };
     runner.on('pass', function (test) {
         result.passes.push({
@@ -21,7 +21,7 @@ function reporter(runner) {
             timedOut: test.timedOut,
             duration: test.duration
         });
-        result.failedAt = test.file;
+        result.failedAtFile = test.file;
     });
     runner.on('end', function () {
         process.stdout.write(utils_1.signal + JSON.stringify(result, null, 2));

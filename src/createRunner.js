@@ -11,8 +11,13 @@ function createRunner(config, tests) {
     options.env.ATOM_SHELL_INTERNAL_RUN_AS_NODE = 1;
     options.env.DIR = config.dir;
     options.env.TUTORIAL_DIR = config.tutorialDir;
-    var node = (process.platform === 'darwin' ?
-        path.resolve(process.resourcesPath, '..', 'Frameworks', 'Atom Helper.app', 'Contents', 'MacOS', 'Atom Helper') : process.execPath);
+    var node = null;
+    if (process.platform === 'darwin' && process.resourcesPath) {
+        node = path.resolve(process.resourcesPath, '..', 'Frameworks', 'Atom Helper.app', 'Contents', 'MacOS', 'Atom Helper');
+    }
+    else {
+        node = process.execPath;
+    }
     return spawn(node, [
         '/usr/local/bin/mocha',
         '--bail',
