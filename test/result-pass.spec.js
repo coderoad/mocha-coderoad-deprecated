@@ -3,18 +3,7 @@ var chaiAsPromised = require("chai-as-promised");
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
-var runner = require('../src/runner').runner;
-var rootDir = __dirname.split('/');
-var config = {
-  dir: rootDir.slice(0, rootDir.length - 1).join('/'),
-  tutorialDir: __dirname + '/tests'
-};
-var handleLog = function(log) {
-  return log;
-};
-var handleResult = function(result) {
-  return result;
-};
+var getRunner = require('./utils').getRunner;
 
 describe('result-pass', function() {
 
@@ -22,7 +11,7 @@ describe('result-pass', function() {
     var files = [
       ['./pass-01.js']
     ];
-    var run = runner(files, config, handleResult, handleLog);
+    var run = getRunner(files);
     var expected = {
       pass: true,
       taskPosition: 1,
@@ -37,7 +26,7 @@ describe('result-pass', function() {
     var files = [
       ['./pass-01.js'], ['./pass-02.js'], ['./pass-03.js']
     ];
-    var run = runner(files, config, handleResult, handleLog);
+    var run = getRunner(files);
     var expected = {
       pass: true,
       taskPosition: 3,
@@ -52,7 +41,7 @@ describe('result-pass', function() {
     var files = [
       ['./pass-01.js', './pass-02.js'], ['./pass-03.js', './pass-04.js']
     ];
-    var run = runner(files, config, handleResult, handleLog);
+    var run = getRunner(files);
     var expected = {
       pass: true,
       taskPosition: 2,

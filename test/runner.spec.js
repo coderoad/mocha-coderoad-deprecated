@@ -1,39 +1,33 @@
 var chai = require('chai');
 var chaiAsPromised = require("chai-as-promised");
+var spies = require('chai-spies');
 
+chai.use(spies);
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
-var runner = require('../src/runner').runner;
-var rootDir = __dirname.split('/');
-var config = {
-  dir: rootDir.slice(0, rootDir.length - 1).join('/'),
-  tutorialDir: __dirname + '/tests'
-};
-var handleLog = function(log) {
-  return log;
-};
-var handleResult = function(result) {
-  return result;
-};
 
-xdescribe('runner', function() {
+var getRunner = require('./utils').getRunner;
+
+
+describe('runner', function() {
 
   it('should run to completion', function() {
     var files = [
       ['pass-01.js']
     ];
-    var run = runner(files, config, handleResult, handleLog);
-    expect(run).to.eventually.be.fulfilled;
+    var run = getRunner(files);
+    return expect(run).to.eventually.be.fulfilled;
   });
 
 
-  it('should load environmental variables', function () {
+  xit('should load environmental variables', function () {
+    var spy = chai.spy.on(handleLog);
     var files = [
       ['env-vars.js']
     ];
-    var run = runner(files, config, handleResult, handleLog);
-    expect(run).to.eventually.equal(Promise.resolve('hi'));
+    var run = getRunner(files);
+    return expect(spy).to.have.been.called();
   });
 
 });

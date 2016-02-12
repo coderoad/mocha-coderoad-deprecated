@@ -4,18 +4,12 @@ var chaiAsPromised = require("chai-as-promised");
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
-var runner = require('../src/runner').runner;
 var rootDir = __dirname.split('/');
 var config = {
   dir: rootDir.slice(0, rootDir.length - 1).join('/'),
-  tutorialDir: __dirname + '/tests'
+  tutorialDir: path.join(__dirname, 'tests')
 };
-var handleLog = function(log) {
-  return log;
-};
-var handleResult = function(result) {
-  return result;
-};
+var getRunner = require('./utils').getRunner;
 
 describe('result-failure', function() {
 
@@ -23,7 +17,7 @@ describe('result-failure', function() {
     var files = [
       ['fail-01.js']
     ];
-    var run = runner(files, config, handleResult, handleLog);
+    var run = getRunner(files);
     var expected = {
       pass: false,
       taskPosition: 0,
@@ -38,7 +32,7 @@ it('returns taskPosition 1 if second test fails', function() {
   var files = [
     ['pass-01.js'], ['fail-01.js']
   ];
-  var run = runner(files, config, handleResult, handleLog);
+  var run = getRunner(files);
   var expected = {
     pass: false,
     taskPosition: 1,
@@ -53,7 +47,7 @@ it('returns taskPosition 3 if fourth test fails', function() {
   var files = [
     ['pass-01.js'], ['pass-02.js'], ['pass-03.js'], ['fail-01.js']
   ];
-  var run = runner(files, config, handleResult, handleLog);
+  var run = getRunner(files);
   var expected = {
     pass: false,
     taskPosition: 3,
@@ -68,7 +62,7 @@ it('returns taskPosition 0 if any of the first tests fail', function () {
     var files = [
       ['pass-01.js', 'pass-02.js', 'fail-01.js']
     ];
-    var run = runner(files, config, handleResult, handleLog);
+    var run = getRunner(files);
     var expected = {
       pass: false,
       taskPosition: 0,
@@ -83,7 +77,7 @@ it('returns the taskPosition at the correct point with arrays of tests', functio
   var files = [
     ['pass-01.js', 'pass-02.js'], ['pass-03.js'], ['pass-04.js', 'fail-01.js']
   ];
-  var run = runner(files, config, handleResult, handleLog);
+  var run = getRunner(files);
   var expected = {
     pass: false,
     taskPosition: 2,

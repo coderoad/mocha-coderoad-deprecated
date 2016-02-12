@@ -1,13 +1,7 @@
 "use strict";
 var utils_1 = require('./utils');
 var createRunner_1 = require('./createRunner');
-var path = require('path');
 function runner(files, config, handleResult, handleLog) {
-    files = files.map(function (subArray) {
-        return subArray.map(function (test) {
-            return path.join(config.tutorialDir, test);
-        });
-    });
     var tests = utils_1.concatAll(files);
     var runner = createRunner_1.createRunner(config, tests);
     var result = {
