@@ -38,19 +38,49 @@ describe('loadContext', function() {
     return expect(run).to.eventually.deep.equal(expected);
   });
 
-    it('should allowing requiring files', function() {
-      var files = [
-        ['load-context-03.js']
-      ];
-      var run = getRunner(files);
-      var expected = {
-        pass: true,
-        taskPosition: 1,
-        failedAtFile: null,
-        msg: 'load-context-03 should pass'
-      };
+  it('should allowing requiring files', function() {
+    var files = [
+      ['load-context-03.js']
+    ];
+    var run = getRunner(files);
+    var expected = {
+      pass: true,
+      taskPosition: 1,
+      failedAtFile: null,
+      msg: 'load-context-03 should pass'
+    };
 
-      return expect(run).to.eventually.deep.equal(expected);
-    });
+    return expect(run).to.eventually.deep.equal(expected);
+  });
+
+  it('should allowing passing globals to the context', function() {
+    var files = [
+      ['load-file-01.js']
+    ];
+    var run = getRunner(files);
+    var expected = {
+      pass: true,
+      taskPosition: 1,
+      failedAtFile: null,
+      msg: 'load-file-01 should pass'
+    };
+
+    return expect(run).to.eventually.deep.equal(expected);
+  });
+
+  it('should allowing passing globals to the context', function() {
+    var files = [
+      ['load-file-02.js']
+    ];
+    var run = getRunner(files);
+    var expected = {
+      pass: true,
+      taskPosition: 1,
+      failedAtFile: null,
+      msg: 'load-file-02 should pass'
+    };
+
+    return expect(run).to.eventually.deep.equal(expected);
+  });
 
 });

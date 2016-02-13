@@ -1,9 +1,9 @@
 "use strict";
 var utils_1 = require('./utils');
-var createRunner_1 = require('./createRunner');
+var create_runner_1 = require('./create-runner');
 function runner(files, config, handleResult, handleLog) {
     var tests = utils_1.concatAll(files);
-    var runner = createRunner_1.createRunner(config, tests);
+    var runner = create_runner_1.createRunner(config, tests);
     var result = {
         pass: false,
         taskPosition: 0,

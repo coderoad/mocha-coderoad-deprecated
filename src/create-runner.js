@@ -1,6 +1,6 @@
 "use strict";
-var spawn = require('child_process').spawn;
 var path = require('path');
+var spawn = require('child_process').spawn;
 function createRunner(config, tests) {
     var options = {
         cwd: config.dir
