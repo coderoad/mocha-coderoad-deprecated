@@ -3,7 +3,7 @@ var chaiAsPromised = require("chai-as-promised");
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
-var getRunner = require('./utils').getRunner;
+var getRunner = require('./utils/runner').getRunner;
 
 describe('result-pass', function() {
 

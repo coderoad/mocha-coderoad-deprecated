@@ -6,9 +6,7 @@ chai.use(spies);
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
-
-var getRunner = require('./utils').getRunner;
-
+var getRunner = require('./utils/runner').getRunner;
 
 describe('runner', function() {
 
@@ -21,13 +19,19 @@ describe('runner', function() {
   });
 
 
-  xit('should load environmental variables', function () {
-    var spy = chai.spy.on(handleLog);
+  it('should load environmental variables', function () {
     var files = [
       ['env-vars.js']
     ];
     var run = getRunner(files);
-    return expect(spy).to.have.been.called();
+    var expected = {
+      pass: true,
+      taskPosition: 1,
+      failedAtFile: null,
+      msg: 'env-vars should pass'
+    };
+
+    return expect(run).to.eventually.deep.equal(expected);
   });
 
 });

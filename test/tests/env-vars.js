@@ -1,12 +1,10 @@
 var expect = require('chai').expect;
 
-describe('pass-01', function () {
-
-  console.log(process.env.DIR);
-  console.log(process.env.TUTORIAL_DIR);
-
+describe('env-vars', function () {
+  
   it('should pass', function () {
-    expect(true).to.be.true;
+    expect(process.env.DIR).to.be.a('string');
+    expect(process.env.TUTORIAL_DIR).to.be.a('string');
   });
 
 });

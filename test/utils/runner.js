@@ -8,11 +8,11 @@ function addPaths(files) {
   });
 }
 
-var runner = require('../src/runner').runner;
+var runner = require('../../src/runner').default;
 var rootDir = __dirname.split('/');
 var config = {
   dir: rootDir.slice(0, rootDir.length - 1).join('/'),
-  tutorialDir: __dirname + '/tests'
+  tutorialDir: path.join(__dirname, '..', '/tests')
 };
 function handleLog(log) {
   return log;

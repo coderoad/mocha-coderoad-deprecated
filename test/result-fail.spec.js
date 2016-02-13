@@ -9,7 +9,7 @@ var config = {
   dir: rootDir.slice(0, rootDir.length - 1).join('/'),
   tutorialDir: path.join(__dirname, 'tests')
 };
-var getRunner = require('./utils').getRunner;
+var getRunner = require('./utils/runner').getRunner;
 
 describe('result-failure', function() {
 
