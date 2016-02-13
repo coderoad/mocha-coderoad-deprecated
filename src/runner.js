@@ -63,7 +63,8 @@ function runner(files, config, handleResult, handleLog) {
         });
     });
 }
-exports.runner = runner;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = runner;
 function findFailureTestPosition(files, file) {
     for (var i = 0; i < files.length; i++) {
         if (files[i].indexOf(file) > -1) {
