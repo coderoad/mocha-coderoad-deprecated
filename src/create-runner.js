@@ -22,6 +22,7 @@ function createRunner(config, tests) {
     return spawn(node, [
         '/usr/local/bin/mocha',
         '--bail',
+        '--harmony',
         ("--reporter=" + path.join(__dirname, 'reporter'))
     ].concat(runnerOptions).concat(tests), options);
 }
