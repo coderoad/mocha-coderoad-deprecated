@@ -18,10 +18,22 @@ function createRunner(config, tests) {
     else {
         node = process.execPath;
     }
+    var runnerOptions = setRunnerOptions(config);
     return spawn(node, [
         '/usr/local/bin/mocha',
         '--bail',
-        ("--reporter=" + path.join(__dirname, 'reporter')),
-    ].concat(tests), options);
+        ("--reporter=" + path.join(__dirname, 'reporter'))
+    ].concat(runnerOptions).concat(tests), options);
 }
 exports.createRunner = createRunner;
+function setRunnerOptions(config) {
+    var runnerOptions = [];
+    if (!config.testRunnerOptions) {
+        return runnerOptions;
+    }
+    if (config.testRunnerOptions.babel) {
+        require('babel-core');
+        runnerOptions.push('--compilers js:babel-core/register');
+    }
+    return runnerOptions;
+}

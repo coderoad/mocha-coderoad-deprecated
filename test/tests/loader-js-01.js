@@ -1,5 +1,5 @@
 var expect = require('chai').expect;
-var loadJS = require('../utils/loadContext').default;
+var loadJS = require('../utils/load-context').default;
 loadJS('./context/addOne.js');
 
 describe('loader-js-01', function () {

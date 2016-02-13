@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 var path = require('path');
-var loadContext = require('../utils/loadContext').default;
+var loadContext = require('../utils/load-context').default;
 data = JSON.parse(JSON.stringify(require('../context/data.json')));
 loadContext('./context/array-method.js');
 
