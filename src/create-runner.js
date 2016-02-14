@@ -18,13 +18,13 @@ function createRunner(config, tests) {
     else {
         node = process.execPath;
     }
-    var runnerOptions = setRunnerOptions(config);
+    var runnerOptions = [];
     return spawn(node, [
         '/usr/local/bin/mocha',
         '--bail',
         '--harmony',
         ("--reporter=" + path.join(__dirname, 'reporter'))
-    ].concat(runnerOptions).concat(tests), options);
+    ].concat(tests), options);
 }
 exports.createRunner = createRunner;
 function setRunnerOptions(config) {
@@ -34,7 +34,12 @@ function setRunnerOptions(config) {
     }
     if (config.testRunnerOptions.babel) {
         require('babel-core');
-        runnerOptions.push('--compilers js:babel-core/register');
+        var babelOptions = [
+            '--use-strict',
+            '--require babel-polyfill',
+            '--compilers js:babel-core/register'
+        ];
+        runnerOptions.concat(babelOptions);
     }
     return runnerOptions;
 }

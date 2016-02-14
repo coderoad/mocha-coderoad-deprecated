@@ -6,7 +6,7 @@ var expect = chai.expect;
 
 var getRunner = require('./utils/runner').getRunner;
 
-xdescribe('loaders', function() {
+describe('loaders', function() {
 
   describe('loadJS', function() {
     it('should load JS files', function() {

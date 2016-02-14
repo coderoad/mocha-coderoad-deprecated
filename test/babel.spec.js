@@ -5,6 +5,7 @@ chai.use(chaiAsPromised);
 var expect = chai.expect;
 
 var getRunner = require('./utils/runner').getRunner;
+var getBabelRunner = require('./utils/babel-runner').getRunner;
 
 describe('babel', function() {
 
@@ -23,11 +24,11 @@ describe('babel', function() {
     return expect(run).to.eventually.deep.equal(expected);
   });
 
-  xit('should compile files before running tests', function() {
+  it('should compile files before running tests', function() {
     var files = [
       ['./babel-02.js']
     ];
-    var run = getRunner(files);
+    var run = getBabelRunner(files);
     var expected = {
       pass: true,
       taskPosition: 1,

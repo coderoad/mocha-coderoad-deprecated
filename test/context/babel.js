@@ -1,4 +1,5 @@
-import 'babel-polyfill'
+"use strict";
+
 const a = 40;
 let b = 2;
-var stringLit = `${a} + ${b} = ${a + b}`;
+var stringList = `${a} + ${b} = ${a + b}`;
