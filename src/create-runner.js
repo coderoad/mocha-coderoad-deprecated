@@ -23,23 +23,8 @@ function createRunner(config, tests) {
         '/usr/local/bin/mocha',
         '--bail',
         '--harmony',
+        '--no-colors',
         ("--reporter=" + path.join(__dirname, 'reporter'))
     ].concat(tests), options);
 }
 exports.createRunner = createRunner;
-function setRunnerOptions(config) {
-    var runnerOptions = [];
-    if (!config.testRunnerOptions) {
-        return runnerOptions;
-    }
-    if (config.testRunnerOptions.babel) {
-        require('babel-core');
-        var babelOptions = [
-            '--use-strict',
-            '--require babel-polyfill',
-            '--compilers js:babel-core/register'
-        ];
-        runnerOptions.concat(babelOptions);
-    }
-    return runnerOptions;
-}
