@@ -17,8 +17,8 @@ function runner(files, config, handleResult, handleLog) {
             if (!!match) {
                 var printed = data.toString().substring(0, match.index);
                 if (!!printed.length) {
-                    var start = printed.substring(0, printed.length / 2);
-                    var end = printed.substring(printed.length / 2, printed.length);
+                    var start = printed.substring(0, printed.length / files.length);
+                    var end = printed.substring(printed.length / files.length, printed.length);
                     var message = '';
                     if (start === end) {
                         message = start;
