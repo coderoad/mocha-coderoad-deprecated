@@ -34,13 +34,11 @@ function runner(files, config, handleResult, handleLog) {
                     testResult = JSON.parse(testResult);
                 }
                 if (testResult.failedAtFile) {
-                    result.pass = false;
                     result.taskPosition = findFailureTestPosition(files, testResult.failedAtFile);
                     result.msg = testResult.failures[0].msg;
                     result.failedAtFile = testResult.failedAtFile;
                 }
                 else {
-                    result.pass = true;
                     result.taskPosition = files.length;
                     result.msg = testResult.passes[testResult.passes.length - 1].msg;
                 }
