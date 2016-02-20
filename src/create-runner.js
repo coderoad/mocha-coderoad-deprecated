@@ -1,7 +1,7 @@
 "use strict";
 var path = require('path');
 var spawn = require('child_process').spawn;
-function createRunner(config, tests) {
+function createRunner(config, testFile) {
     var options = {
         cwd: config.dir
     };
@@ -18,13 +18,13 @@ function createRunner(config, tests) {
     else {
         node = process.execPath;
     }
-    var runnerOptions = [];
     return spawn(node, [
         '/usr/local/bin/mocha',
         '--bail',
         '--harmony',
         '--no-colors',
-        ("--reporter=" + path.join(__dirname, 'reporter'))
-    ].concat(tests), options);
+        ("--reporter=" + path.join(__dirname, 'reporter')),
+        testFile
+    ], options);
 }
 exports.createRunner = createRunner;

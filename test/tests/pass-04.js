@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 
-describe('pass-04', function () {
+describe('04 pass-04', function () {
 
   it('should pass', function () {
     expect(true).to.be.true;

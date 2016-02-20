@@ -1,52 +1,36 @@
+"use strict";
+var path = require('path');
 var chai = require('chai');
 var chaiAsPromised = require("chai-as-promised");
 chai.use(chaiAsPromised);
 var expect = chai.expect;
+var concatTests = require('./utils/concat-tests').concatTests;
 
 var getRunner = require('./utils/runner').getRunner;
 
 describe('result-pass', function() {
 
   it('should take one passing test and return taskPosition 1', function() {
-    var files = [
-      ['./pass-01.js']
-    ];
-    var run = getRunner(files);
+    var file = path.join(__dirname, 'tests', 'pass-01.js');
+    var run = getRunner(file);
     var expected = {
-      pass: true,
       taskPosition: 1,
-      failedAtFile: null,
-      msg: 'pass-01 should pass'
+      msg: 'Task 1 Complete'
     };
 
     return expect(run).to.eventually.deep.equal(expected);
   });
 
   it('should take three passing tests and return taskPosition 3', function () {
-    var files = [
-      ['./pass-01.js'], ['./pass-02.js'], ['./pass-03.js']
-    ];
-    var run = getRunner(files);
+    let tests = ['./tests/pass-01.js', './tests/pass-02.js', './tests/pass-03.js'];
+    tests = tests.map(function(test) {
+      return path.join(__dirname, test);
+    })
+    var file = concatTests(path.join(__dirname, 'temp', 'pass02.js'), tests);
+    var run = getRunner(file);
     var expected = {
-      pass: true,
       taskPosition: 3,
-      failedAtFile: null,
-      msg: 'pass-03 should pass'
-    };
-
-    return expect(run).to.eventually.deep.equal(expected);
-  });
-
-  it('should take two arrays of two passing tests and still return taskPosition 2', function () {
-    var files = [
-      ['./pass-01.js', './pass-02.js'], ['./pass-03.js', './pass-04.js']
-    ];
-    var run = getRunner(files);
-    var expected = {
-      pass: true,
-      taskPosition: 2,
-      failedAtFile: null,
-      msg: 'pass-04 should pass'
+      msg: 'Task 3 Complete'
     };
 
     return expect(run).to.eventually.deep.equal(expected);
