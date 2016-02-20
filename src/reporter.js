@@ -12,7 +12,7 @@ function reporter(runner) {
         var obj = getIndexAndTitle(title);
         result.passes.push({
             msg: "Task " + obj.index + " Complete",
-            taskPosition: obj.index - 1
+            taskPosition: obj.index
         });
     });
     runner.on('fail', function (test, err) {

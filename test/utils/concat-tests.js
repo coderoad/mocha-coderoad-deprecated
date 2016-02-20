@@ -18,7 +18,7 @@ function concatTests(targetFile, files) {
 }
 exports.concatTests = concatTests;
 function readAppend(targetFile, file) {
-    fs.readFile(file, function (err, data) {
+    fs.readFileSync(file, function (err, data) {
         if (err) {
             throw err;
         }
