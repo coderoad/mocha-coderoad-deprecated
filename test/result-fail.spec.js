@@ -17,6 +17,8 @@ describe('result-failure', function() {
     var file = path.join(__dirname, 'tests', 'fail-01.js');
     var run = getRunner(file);
     var expected = {
+      change: 0,
+      pass: false,
       taskPosition: 0,
       msg: 'fail-01 should fail',
       timedOut: false
@@ -32,6 +34,7 @@ xit('returns taskPosition 1 if second test fails', function() {
   var run = getRunner(files);
   var expected = {
     pass: false,
+    change: 1,
     taskPosition: 1,
     failedAtFile: path.join(config.tutorialDir, 'fail-01.js'),
     msg: 'fail-01 should fail'
@@ -47,6 +50,7 @@ xit('returns taskPosition 3 if fourth test fails', function() {
   var run = getRunner(files);
   var expected = {
     pass: false,
+    change: 3,
     taskPosition: 3,
     failedAtFile: path.join(config.tutorialDir, 'fail-01.js'),
     msg: 'fail-01 should fail'
@@ -62,6 +66,7 @@ xit('returns taskPosition 0 if any of the first tests fail', function () {
     var run = getRunner(files);
     var expected = {
       pass: false,
+      change: 0,
       taskPosition: 0,
       failedAtFile: path.join(config.tutorialDir, 'fail-01.js'),
       msg: 'fail-01 should fail'
@@ -77,6 +82,7 @@ xit('returns the taskPosition at the correct point with arrays of tests', functi
   var run = getRunner(files);
   var expected = {
     pass: false,
+    change: 2,
     taskPosition: 2,
     failedAtFile: path.join(config.tutorialDir, 'fail-01.js'),
     msg: 'fail-01 should fail'

@@ -8,17 +8,13 @@ function runner(testFile, config, handleResult, handleLog) {
     var signalMatch = new RegExp(utils_1.signal);
     return new Promise(function (resolve, reject) {
         runner.stdout.on('data', function (data) {
+            data = data.toString();
             var match = signalMatch.exec(data);
             if (!match) {
-                throw 'Result test data doesn\'t match signal string', data.toString();
+                handleLog(data);
+                return;
             }
-            if (match.index > 0) {
-                var log = data.toString().substring(0, match.index);
-                if (!!log.length) {
-                    handleLog(log);
-                }
-            }
-            var resultString = data.toString().substring(match.index + utils_1.signal.length);
+            var resultString = data.substring(match.index + utils_1.signal.length);
             var result = JSON.parse(JSON.stringify(resultString));
             if (typeof result === 'string') {
                 result = JSON.parse(result);

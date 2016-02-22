@@ -14,6 +14,8 @@ describe('result-pass', function() {
     var file = path.join(__dirname, 'tests', 'pass-01.js');
     var run = getRunner(file);
     var expected = {
+      change: 1,
+      pass: true,
       taskPosition: 1,
       msg: 'Task 1 Complete'
     };
@@ -29,6 +31,8 @@ describe('result-pass', function() {
     var file = concatTests(path.join(__dirname, 'temp', 'pass02.js'), tests);
     var run = getRunner(file);
     var expected = {
+      change: 3,
+      pass: true,
       taskPosition: 3,
       msg: 'Task 3 Complete'
     };

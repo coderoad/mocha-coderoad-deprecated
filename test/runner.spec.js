@@ -19,6 +19,8 @@ describe('runner', function() {
     var file = path.join(__dirname, 'tests', 'env-vars.js');
     var run = getRunner(file);
     var expected = {
+      change: 1,
+      pass: true,
       taskPosition: 1,
       msg: 'Task 1 Complete'
     };
