@@ -29,6 +29,8 @@ function runner(testFile, config, handleResult, handleLog) {
             else {
                 final = result.passes[result.passes.length - 1];
             }
+            final.change = final.taskPosition - config.taskPosition;
+            final.pass = final.change > 0;
             handleResult(final);
         });
         runner.stderr.on('data', function (data) {

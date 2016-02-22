@@ -11,6 +11,7 @@ function createRunner(config, testFile) {
     options.env.ATOM_SHELL_INTERNAL_RUN_AS_NODE = 1;
     options.env.DIR = config.dir;
     options.env.TUTORIAL_DIR = config.tutorialDir;
+    options.env.TASK_POSITION = config.taskPosition;
     var node = null;
     if (process.platform === 'darwin' && process.resourcesPath) {
         node = path.resolve(process.resourcesPath, '..', 'Frameworks', 'Atom Helper.app', 'Contents', 'MacOS', 'Atom Helper');
