@@ -2,7 +2,7 @@
   "name": "mocha-coderoad",
   "version": "0.4.1",
   "description": "mocha test runner & reporter for atom-coderoad",
-  "main": "src/runner.js",
+  "main": "lib/runner.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,6 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/coderoad/mocha-coderoad.git"
   },
+  "files": ["lib"],
   "keywords": [
     "coderoad",
     "mocha"

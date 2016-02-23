@@ -1,6 +1,6 @@
 node_modules
 tslint.json
-src/*.ts
+src/*.js
 test/**/*.ts
 tsconfig.json
 typings
