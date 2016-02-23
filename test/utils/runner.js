@@ -1,6 +1,6 @@
 var path = require('path');
 
-var runner = require('../../src/runner').default;
+var runner = require('../../lib/runner').default;
 var rootDir = __dirname.split('/');
 var config = {
   dir: rootDir.slice(0, rootDir.length - 1).join('/'),

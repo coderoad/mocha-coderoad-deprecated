@@ -26,7 +26,7 @@ export function createRunner(config, testFile) {
 
   // 3. spawn child process calling mocha test runner
   return spawn(node, [
-    '/usr/local/bin/mocha',
+    path.join(__dirname, '..', 'node_modules', 'mocha', 'bin', 'mocha'),
     '--bail',
     '--harmony',
     '--no-colors',
