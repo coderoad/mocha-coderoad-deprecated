@@ -1,6 +1,6 @@
 {
   "name": "mocha-coderoad",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "mocha test runner & reporter for atom-coderoad",
   "main": "lib/runner.js",
   "scripts": {
