@@ -26,6 +26,7 @@ export function createRunner(config, testFile) {
 
   // 3. spawn child process calling mocha test runner
   return spawn(node, [
+    // into shared node_modules directory
     path.join(__dirname, '..', 'node_modules', 'mocha', 'bin', 'mocha'),
     '--bail',
     '--harmony',
