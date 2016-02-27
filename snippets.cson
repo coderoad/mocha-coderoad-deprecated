@@ -1,0 +1,80 @@
+'.source.js':
+  'Mocha-CodeRoad Function':
+    'prefix': 'mochacr-f'
+    'body': """
+            var expect = require('chai').expect;
+
+            describe('${1:task number ('01')} ${2:function name}', function () {
+
+              it('should exist', function () {
+                expect(${$2}).to.not.be.undefined;
+              });
+
+              it('should be a function', function () {
+                expect(${$2}).to.be.a('function');
+              });
+
+              it('should take ${3} parameter(s)', function () {
+                expect(${$2}).to.have.length(${3});
+              });
+
+              it('should have the correct output', function () {
+                var input = ${4: function input};
+                var output = ${5: function output}
+                expect(${$2}(input)).to.deep.equal(output);
+              });
+
+            });
+            """
+  'Mocha-CodeRoad Array':
+    'prefix': 'mochacr-a'
+    'body': """
+            var expect = require('chai').expect;
+
+            describe('${1:task number ('01')} ${2:variable name}', function () {
+
+              it('should exist', function () {
+                expect(${$2}).to.not.be.undefined;
+              });
+
+              it('should be an array', function () {
+                expect(${$2}).to.be.instanceof(Array);
+              });
+
+              it('should take have ${3} items', function () {
+                expect(${$2}).to.have.length(${3});
+              });
+
+              it('should have the correct values', function () {
+                var result = [${4: array of values}];
+                expect(${$2}.to.deep.equal(result);
+              });
+
+            });
+            """
+  'Mocha-CodeRoad Object':
+    'prefix': 'mochacr-o'
+    'body': """
+            var expect = require('chai').expect;
+
+            describe('${1:task number ('01')} ${2:variable name}', function () {
+
+              it('should exist', function () {
+                expect(${$2}).to.not.be.undefined;
+              });
+
+              it('should be an object', function () {
+                expect(${$2}).to.be.an('object');
+              });
+
+              it('should take have property ${3}', function () {
+                expect(${$2}).to.have.property(${3});
+              });
+
+              it('should have the correct value', function () {
+                var result = ${4: object};
+                expect(${$2}.to.deep.equal(result);
+              });
+
+            });
+            """
