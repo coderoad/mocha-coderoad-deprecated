@@ -7,9 +7,9 @@
 
 ### Snippets
 
-Use snippets to quickly generate test files.
+Use [atom-snippets](https://atom.io/docs/latest/using-atom-snippets) to quickly generate test files.
 
-Open up *Atom* -> *Open Your Snippets*. Add the contents of `snippets.cson` to your global `snippets.cson` file.
+Open up *Atom* -> *Open Your Snippets*. Add the contents of *mocha-coderoad* `snippets.cson` to your global `snippets.cson` file.
 
 Quickly generate tests using the following snippet prefixes:
 
