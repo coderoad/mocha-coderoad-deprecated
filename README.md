@@ -5,6 +5,18 @@
     npm install mocha-coderoad
 
 
+### Snippets
+
+Use snippets to quickly generate test files.
+
+Open up *Atom* -> *Open Your Snippets*. Add the contents of `snippets.cson` to your global `snippets.cson` file.
+
+Quickly generate tests using the following snippet prefixes:
+
+* mochacr-f - test a function
+* mochacr-a - test an array
+* mochacr-o - test an object
+
 ### Test Statements
 
 It makes sense to write test statements using 'should', 'must' or negative statements. Remember, the failing test message will be delivered as feedback to the user.
