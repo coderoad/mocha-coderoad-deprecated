@@ -24,6 +24,7 @@ export function createRunner(config, testFile) {
 
   // let runnerOptions = []; // setRunnerOptions(config);
   let mocha = path.join(__dirname, '..', '..', 'mocha', 'bin', 'mocha');
+  // let mocha = path.join(__dirname, '..', 'node_modules', 'mocha', 'bin', 'mocha');
 
   // 3. spawn child process calling mocha test runner
   return spawn(node, [

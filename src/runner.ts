@@ -1,18 +1,7 @@
 import {signal} from './utils';
 import {createRunner} from './create-runner';
 
-interface Result {
-  msg: string;
-  taskPosition: number;
-  pass: boolean;
-  change: number;
-  failedAtFile?: string;
-  body?: string;
-  timedOut?: boolean;
-  duration?: number;
-};
-
-export default function runner(testFile, config: Config, handleResult, handleLog) {
+export default function runner(testFile, config: CR.Config, handleResult, handleLog) {
 
   let runner = createRunner(config, testFile);
   var final = null;
@@ -49,6 +38,7 @@ export default function runner(testFile, config: Config, handleResult, handleLog
 
       final.change = final.taskPosition - config.taskPosition;
       final.pass = final.change > 0;
+      final.completed = result.pass;
       // return result to atom-coderoad
       handleResult(final);
     });

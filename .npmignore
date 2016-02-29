@@ -1,3 +1,5 @@
 snippets.cson
 test
-typings
+src/typings
+tsconfig.json
+tslint.json
