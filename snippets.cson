@@ -7,7 +7,7 @@
             describe('${1:task number ('01')} ${2:function name}', function () {
 
               it('should exist', function () {
-                expect(${2}).to.not.be.undefined;
+                expect(${2}).to.be.defined;
               });
 
               it('should be a function', function () {
@@ -34,7 +34,7 @@
             describe('${1:task number ('01')} ${2:variable name}', function () {
 
               it('should exist', function () {
-                expect(${2}).to.not.be.undefined;
+                expect(${2}).to.be.defined;
               });
 
               it('should be an array', function () {
@@ -60,7 +60,7 @@
             describe('${1:task number ('01')} ${2:variable name}', function () {
 
               it('should exist', function () {
-                expect(${2}).to.not.be.undefined;
+                expect(${2}).to.be.defined;
               });
 
               it('should be an object', function () {
