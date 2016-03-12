@@ -1,7 +1,8 @@
 import {signal} from './utils';
 import {createRunner} from './create-runner';
 
-export default function runner(testFile, config: CR.Config, handleResult, handleLog) {
+export default function runner(testFile: string, config: CR.Config,
+  handleResult: (result) => CR.TestResult, handleLog: (log) => string) {
 
   let runner = createRunner(config, testFile);
   var final = null;
@@ -28,12 +29,14 @@ export default function runner(testFile, config: CR.Config, handleResult, handle
         result = JSON.parse(result);
       }
 
-      if (!result.pass) {
+      if (result.pass) {
+        // pass
+        final = result.passes[result.passes.length - 1];
+      } else if (result.pass === false ) {
         // fail: return first failure
         final = result.failures[0];
       } else {
-        // pass
-        final = result.passes[result.passes.length - 1];
+        console.log('error processing result: ', result)
       }
 
       final.change = final.taskPosition - config.taskPosition;
@@ -47,7 +50,7 @@ export default function runner(testFile, config: CR.Config, handleResult, handle
       console.log('test error', data.toString());
     });
 
-    runner.on('close', function(code) {
+    runner.on('close', function(code: number) {
       if (code === 0) {
         resolve(final);
       } else {

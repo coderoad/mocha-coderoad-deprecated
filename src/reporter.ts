@@ -1,4 +1,3 @@
-"use strict";
 import {signal} from './utils';
 
 exports = module.exports = reporter;
@@ -9,7 +8,7 @@ function reporter(runner) {
     pass: true
   };
 
-  runner.on('pass', function(test) {
+  runner.on('pass', function(test: Mocha.ITest) {
     let title = test.fullTitle();
     let obj = getIndexAndTitle(title);
     // add pass
@@ -19,7 +18,7 @@ function reporter(runner) {
     });
   });
 
-  runner.on('fail', function(test, err) {
+  runner.on('fail', function(test: Mocha.ITest, err: Error) {
     let title = test.fullTitle();
     let obj = getIndexAndTitle(title);
     // add fail
@@ -45,7 +44,7 @@ function reporter(runner) {
       throw 'Tests should begin with a number, indicating the task number';
     }
     return {
-      index: parseInt(indexString[0]),
+      index: parseInt(indexString[0], 10),
       msg: title.slice(indexString[0].length + 1)
     };
   }

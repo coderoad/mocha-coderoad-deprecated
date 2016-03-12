@@ -4,7 +4,7 @@
 // Definitions: https://github.com/borisyankov/DefinitelyTyped
 
 interface MochaSetupOptions {
-    //milliseconds to wait before considering a test slow
+    // milliseconds to wait before considering a test slow
     slow?: number;
 
     // timeout in milliseconds
@@ -13,7 +13,7 @@ interface MochaSetupOptions {
     // ui name "bdd", "tdd", "exports" etc
     ui?: string;
 
-    //array of accepted globals
+    // array of accepted globals
     globals?: any[];
 
     // reporter instance (function or string), defaults to `mocha.reporters.Spec`
@@ -231,6 +231,6 @@ declare module Mocha {
     }
 }
 
-declare module "mocha" {
+declare module 'mocha' {
     export = Mocha;
 }
