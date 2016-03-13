@@ -2,7 +2,7 @@ import {signal} from './utils';
 import {createRunner} from './create-runner';
 
 export default function runner(testFile: string, config: CR.Config,
-  handleResult: (result) => CR.TestResult, handleLog: (log) => string) {
+  handleResult: (result) => CR.TestResult) {
 
   let runner = createRunner(config, testFile);
   var final = null;
@@ -16,7 +16,7 @@ export default function runner(testFile: string, config: CR.Config,
       let match = signalMatch.exec(data); // 0
 
       if (!match) {
-        handleLog(data);
+        console.log(data);
         return;
       }
 
