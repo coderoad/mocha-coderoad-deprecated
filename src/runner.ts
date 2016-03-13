@@ -36,7 +36,7 @@ export default function runner(testFile: string, config: CR.Config,
         // fail: return first failure
         final = result.failures[0];
       } else {
-        console.log('error processing result: ', result)
+        console.log('error processing result: ', result);
       }
 
       final.change = final.taskPosition - config.taskPosition;

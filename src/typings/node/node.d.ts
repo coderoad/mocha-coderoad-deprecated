@@ -204,6 +204,8 @@ declare module NodeJS {
     export interface ReadWriteStream extends ReadableStream, WritableStream {}
 
     export interface Process extends EventEmitter {
+        resourcesPath?: string;
+        env: any;
         stdout: WritableStream;
         stderr: WritableStream;
         stdin: ReadableStream;
@@ -212,7 +214,6 @@ declare module NodeJS {
         abort(): void;
         chdir(directory: string): void;
         cwd(): string;
-        env: any;
         exit(code?: number): void;
         getgid(): number;
         setgid(id: number): void;
@@ -430,7 +431,7 @@ declare module "http" {
     import * as events from "events";
     import * as net from "net";
     import * as stream from "stream";
-    
+
     export interface RequestOptions {
         protocol?: string;
         host?: string;

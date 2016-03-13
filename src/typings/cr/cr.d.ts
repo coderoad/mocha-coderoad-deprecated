@@ -24,3 +24,7 @@ interface TestResult {
   }
 
 }
+
+interface Process {
+  resourcesPath: string;
+}
