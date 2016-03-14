@@ -1,5 +1,6 @@
 import * as path from 'path';
 import {fileExists} from './exists';
+import './loaders';
 const spawn = require('child_process').spawn;
 
 // get absolute path to node exec
@@ -45,6 +46,7 @@ export function createRunner(config: CR.Config, testFile: string) {
     '--harmony',
     '--no-colors',
     `--reporter=${path.join(__dirname, 'reporter.js') }`,
+    path.join(__dirname, 'loaders'),
     testFile
   ], options);
   // .concat(runnerOptions)

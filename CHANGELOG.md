@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.5.3] - 2016-03-13
+- `loadEditor` for loading editor files
+- `loadGlobal` for loading global data
+
 ## [0.5.1] - 2016-03-11
 - optimizations
 - handle older NPM versions
