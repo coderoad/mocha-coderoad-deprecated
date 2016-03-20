@@ -17,8 +17,6 @@ function getCrossPlatformPath(pathTo: string): string {
   pathTo = path.normalize(pathTo);
   if (process.platform.match(/win/)) {
     pathTo = pathTo.replace(/\\/g, '/');
-  } else {
-    pathTo = pathTo.replace(/\//g, '\\');
   }
   return pathTo;
 }

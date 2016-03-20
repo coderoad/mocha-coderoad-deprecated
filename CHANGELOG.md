@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.5.4] - 2016-03-20
+- fix: normalize path issue on Linux
+
 ## [0.5.3] - 2016-03-13
 - `loadEditor` for loading editor files
 - `loadGlobal` for loading global data
@@ -15,4 +18,4 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - return `result.completed`: boolean, if all tests pass
 
 ## [0.4.4] - 2016-02-26
-- `snippets.cson`, for quickly generating tests
+- *snippets.cson*, for quickly generating tests
