@@ -16,7 +16,11 @@ export default function runner(testFile: string, config: CR.Config,
       let match = signalMatch.exec(data); // 0
 
       if (!match) {
-        console.log(data);
+        try {
+          console.dir(JSON.parse(data));
+        } catch (e) {
+          console.log(data);
+        }
         return;
       }
 
@@ -32,7 +36,7 @@ export default function runner(testFile: string, config: CR.Config,
       if (result.pass) {
         // pass
         final = result.passes[result.passes.length - 1];
-      } else if (result.pass === false ) {
+      } else if (result.pass === false) {
         // fail: return first failure
         final = result.failures[0];
       } else {

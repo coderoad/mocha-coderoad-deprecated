@@ -7,13 +7,11 @@ var config = {
   tutorialDir: path.join(__dirname, '..', '/tests'),
   taskPosition: 0
 };
-function handleLog(log) {
-  return log;
-}
+
 function handleResult(result) {
   return result;
 }
 
 exports.getRunner = function getRunner(file) {
-  return runner(file, config, handleResult, handleLog);
+  return runner(file, config, handleResult,);
 }
