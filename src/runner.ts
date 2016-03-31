@@ -17,7 +17,7 @@ export default function runner(testFile: string, config: CR.Config,
 
       if (!match) {
         try {
-          console.dir(JSON.parse(data));
+          console.dir(JSON.parse(JSON.stringify(data)));
         } catch (e) {
           console.log(data);
         }
