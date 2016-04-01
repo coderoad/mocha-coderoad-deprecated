@@ -13,5 +13,5 @@ function handleResult(result) {
 }
 
 exports.getRunner = function getRunner(file) {
-  return runner(file, config, handleResult,);
+  return runner(file, config, handleResult);
 }

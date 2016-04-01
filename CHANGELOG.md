@@ -2,8 +2,12 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [0.5.6] - 2016-03-31
+## [0.6.0] - 2016-04-01
+- loaders are now internal to Atom-Coderoad
+
+## [0.5.7] - 2016-03-31
 - log objects and arrays using `console.dir`
+- remove babel dependency
 
 ## [0.5.4] - 2016-03-20
 - fix: normalize path issue on Linux
