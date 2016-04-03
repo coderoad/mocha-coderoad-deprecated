@@ -29,106 +29,22 @@ it('isn\'t a function')
 
 ### Loaders
 
-Use a **loader** to run the user saved file in the context of your file. Think of a loader as a way to place the file your testing inside of your test file. Import your loader and run it on a specific user file.
+Use a **loader** to run the user saved file in the context of your file. Think of a loader as a way to place the file your testing inside of your test file. Loaders are written inside of comments.
 
 ```js
-var loadJS = require('path/to/loadJS').default;
-loadJS('user-file.js');
-// adds file contents here
+// load('user-file.js');
+/* workspaceDirectory/user-file.js */
 ```
 
-You'll have to roll your own loader to fit your project, but there are example [loaders](https://coderoad.github.io/docs/#loaders) included later in the docs.
-
-*Note: When using spies, stubs or mocks, initiate them above your loader call.*
-
-Tutorials may be written in different programming languages or for different compilers, so there isn't yet a standard way to load data from user created files. Instead, you'll have to load/transpile your files for the test runner. Rolling your own solution allows you to load data in a way that fits your project.
-
-There may be a simpler approach in the future, but for now these snippets should help:
-
-
-#### loadJS (JavaScript)
+When loading files within your tutorial directory, add a second parameter of `true`. This can allow you to low additional data variables or functions, for example: `var data = {...}`.
 
 ```js
-var vm = require('vm'),
-  fs = require('fs'),
-  path = require('path');
-function loadJS(pathToContext) {
-  var absPath = path.join(process.env.DIR, pathToContext);
-  var code = fs.readFileSync(absPath, 'utf8');
-  vm.runInThisContext(code);
-}
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = loadJS;
-```
-
-#### loadBabel (Babel)
-
-See the [Babel documentation](https://babeljs.io/docs/setup/#node) on how to install Babel & the selected [presets](http://babeljs.io/docs/plugins/#presets). Set the [options](http://babeljs.io/docs/usage/options/) you need.
-
-`> npm i -s babel-core` + presets
-
-```js
-var vm = require('vm'),
-    fs = require('fs'),
-    path = require('path'),
-    babel = require('babel'),
-    options = {
-      presets: ['es2015']
-    };
-function loadBabel(pathToContext) {
-    var absPath = path.join(process.env.DIR, pathToContext);
-    var code = fs.readFileSync(absPath, 'utf8');
-    var js = babel.transform(code, options);
-      vm.runInThisContext(js);
-    }
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = loadBabel;
-```
-
-#### loadTS (TypeScript)
-
-To use TypeScript, install the package as a tutorial dependency.
-
-`> npm i -s typescript`
-
-```js
-var ts = require('typescript'),
-    options = {
-        module: 'commonjs',
-        target: 'ES5'
-    };
-function loadTS(pathToContext) {
-    var absPath = path.join(process.env.DIR, pathToContext);
-    var code = fs.readFileSync(absPath, 'utf8');
-    var js = ts.transpile(code, options);
-        vm.runInThisContext(js);
-    }
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = loadTS;
+// load('data-file.js', true)
+/* workspaceDirectory/node_modules/tutorial-name/tutorial/data-file.js */
 ```
 
 
-### Loading Data Files
-
-Data can be loaded in the user's file by setting it as a global within the test. Remember, the top of the test file (above the loader), acts as the top of the user's page.
-
-Although bad practice, it can be easiest to set data to the global scope.
-
-```js
-if (!global.data) {
-    global.data = 43;
-}
-
-if (!global.data2) {
-    global.data2 = JSON.parse(JSON.stringify(require('./data2.json')));
-}
-```
-
-Users can access global data by name in their file.
-
-```js
-var secret = data - 1;
-```
+### Writing Tests
 
 Here are examples using *mocha* with *chai*'s *expect*. See the [docs](http://chaijs.com/api/bdd/).
 
@@ -136,7 +52,7 @@ Here are examples using *mocha* with *chai*'s *expect*. See the [docs](http://ch
 
 ```js
 it('doesn\'t exist', function() {
-    expect(target).to.not.be.undefined;
+    expect(target).to.be.defined;
 });
 ```
 
