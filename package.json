@@ -1,8 +1,8 @@
 {
   "name": "mocha-coderoad",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "mocha test runner & reporter for atom-coderoad",
-  "main": "lib/runner.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -26,7 +26,9 @@
   },
   "homepage": "https://github.com/coderoad/mocha-coderoad#readme",
   "dependencies": {
-    "mocha": "2.4.5"
+    "mocha": "2.4.5",
+    "process-console-log": "^0.2.0",
+    "node-file-exists": "^0.1.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",

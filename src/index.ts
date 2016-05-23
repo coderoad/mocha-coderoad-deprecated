@@ -1,23 +1,31 @@
-import {signal} from './utils';
-import {createRunner} from './create-runner';
+import {signal, testPath} from './constants';
+import runnerProcess from './runner-process';
+import writeTest from './write-test';
+// import {parseLog} from 'process-console-log';
+// import loadLogger from './logger';
 
-export default function runner(testFile: string, config: CR.Config,
-  handleResult: (result) => CR.TestResult) {
+export default function runner(
+  testString: string, config: CR.Config,
+  handleResult: (result) => CR.TestResult
+) {
+  // write tests to file
+  writeTest(testString);
+  // run tests on file
+  const runner = runnerProcess(config);
 
-  let runner = createRunner(config, testFile);
   var final = null;
-  let signalMatch = new RegExp(signal);
+  const signalMatch = new RegExp(signal);
 
-  return new Promise((resolve, reject) => {
-    runner.stdout.on('data', function(data): void {
+  return new Promise(function run(resolve, reject) {
 
+    runner.stdout.on('data', function onData(data): void {
       data = data.toString();
       // parse only final output data
       let match = signalMatch.exec(data); // 0
 
       if (!match) {
         try {
-          console.dir(JSON.parse(JSON.stringify(data)));
+          console.log(data);
         } catch (e) {
           console.log(data);
         }
@@ -46,20 +54,21 @@ export default function runner(testFile: string, config: CR.Config,
       final.change = final.taskPosition - config.taskPosition;
       final.pass = final.change > 0;
       final.completed = result.pass;
+
       // return result to atom-coderoad
       handleResult(final);
     });
 
-    runner.stderr.on('data', function(data) {
+    runner.stderr.on('data', function onError(data) {
       console.log('test error', data.toString());
     });
 
-    runner.on('close', function(code: number) {
-      if (code === 0) {
-        resolve(final);
-      } else {
-        resolve(final);
-      }
+    runner.on('close', function onClose(code: number) {
+      // if (code === 0) {
+      //   resolve(final);
+      // } else {
+      resolve(final);
+      // }
     });
   });
 }

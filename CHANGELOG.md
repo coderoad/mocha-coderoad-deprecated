@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.7.0] -
+- improved console logger
+
 ## [0.6.0] - 2016-04-01
 - loaders are now internal to Atom-Coderoad
 

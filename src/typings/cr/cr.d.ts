@@ -12,14 +12,14 @@ interface TestResult {
   interface Config {
     dir: string;
     package?: string;
-    testRunner?: string;
+    runner?: string;
     tutorial?: string;
     tutorialDir?: string;
-    tutorialOptions?: Object;
+    runnerOptions?: Object;
     issuesPath?: string;
     repo?: string;
     edit?: boolean;
-    runner?: any;
+    run?: any;
     taskPosition?: number;
   }
 

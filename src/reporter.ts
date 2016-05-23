@@ -1,11 +1,11 @@
-import {signal} from './utils';
+import {signal} from './constants';
 
 exports = module.exports = reporter;
 function reporter(runner) {
   let result = {
     passes: [],
     failures: [],
-    pass: true
+    pass: true,
   };
 
   runner.on('pass', function(test: Mocha.ITest) {
@@ -14,7 +14,7 @@ function reporter(runner) {
     // add pass
     result.passes.push({
       msg: `Task ${obj.index} Complete`,
-      taskPosition: obj.index
+      taskPosition: obj.index,
     });
   });
 
@@ -26,7 +26,7 @@ function reporter(runner) {
       msg: obj.msg,
       taskPosition: obj.index - 1,
       // body: test.body,
-      timedOut: test.timedOut
+      timedOut: test.timedOut,
       // duration: test.duration
     });
     result.pass = false;
@@ -37,7 +37,12 @@ function reporter(runner) {
     process.stdout.write(signal + JSON.stringify(result, null, 2));
   });
 
-  function getIndexAndTitle(title: string): { index: number, msg: string } {
+  interface IndexTitle {
+    index: number;
+    msg: string;
+  }
+
+  function getIndexAndTitle(title: string): IndexTitle {
     // tests prefixed with task number: "01 title"
     let indexString = title.match(/^[0-9]+/);
     if (!indexString) {
@@ -45,7 +50,7 @@ function reporter(runner) {
     }
     return {
       index: parseInt(indexString[0], 10),
-      msg: title.slice(indexString[0].length + 1)
+      msg: title.slice(indexString[0].length + 1),
     };
   }
 
