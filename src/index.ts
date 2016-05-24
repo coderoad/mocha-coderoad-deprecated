@@ -1,11 +1,11 @@
-import {signal, testPath} from './constants';
+import {signal} from './constants';
 import runnerProcess from './runner-process';
 import writeTest from './write-test';
-// import {parseLog} from 'process-console-log';
-// import loadLogger from './logger';
+import {parseLog} from 'process-console-log';
 
 export default function runner(
-  testString: string, config: CR.Config,
+  testString: string,
+  config: CR.Config,
   handleResult: (result) => CR.TestResult
 ) {
   // write tests to file
@@ -25,9 +25,11 @@ export default function runner(
 
       if (!match) {
         try {
-          console.log(data);
+          // console.log(data);
+          parseLog(data);
         } catch (e) {
-          console.log(data);
+          // console.log(data);
+          parseLog(data);
         }
         return;
       }

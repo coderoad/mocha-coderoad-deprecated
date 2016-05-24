@@ -36,10 +36,13 @@ export default function runnerProcess(config: CR.Config) {
   if (options.env == null) {
     options.env = Object.create(process.env);
   }
-  options.env.ATOM_SHELL_INTERNAL_RUN_AS_NODE = 1;
-  options.env.DIR = config.dir;
-  options.env.TUTORIAL_DIR = config.dir;
-  options.env.TASK_POSITION = config.taskPosition;
+
+  Object.assign(options.env, {
+    ATOM_SHELL_INTERNAL_RUN_AS_NODE: 1,
+    DIR: config.dir,
+    TUTORIAL_DIR: config.dir,
+    TASK_POSITION: config.taskPosition
+  });
 
   // spawn child process calling mocha test runner
   return spawn(node, [
