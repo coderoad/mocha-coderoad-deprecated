@@ -8,23 +8,21 @@ function reporter(runner) {
     pass: true,
   };
 
-  runner.on('pass', function(test: Mocha.ITest) {
-    let title = test.fullTitle();
-    let obj = getIndexAndTitle(title);
+  runner.on('pass', (test: Mocha.ITest) => {
+    const {index} = getIndexAndTitle(test.fullTitle());
     // add pass
     result.passes.push({
-      msg: `Task ${obj.index} Complete`,
-      taskPosition: obj.index,
+      msg: `Task ${index} Complete`,
+      taskPosition: index,
     });
   });
 
-  runner.on('fail', function(test: Mocha.ITest, err: Error) {
-    let title = test.fullTitle();
-    let obj = getIndexAndTitle(title);
+  runner.on('fail', (test: Mocha.ITest, err: Error) => {
+    const {msg, index} = getIndexAndTitle(test.fullTitle());
     // add fail
     result.failures.push({
-      msg: obj.msg,
-      taskPosition: obj.index - 1,
+      msg,
+      taskPosition: index - 1,
       // body: test.body,
       timedOut: test.timedOut,
       // duration: test.duration
@@ -44,7 +42,7 @@ function reporter(runner) {
 
   function getIndexAndTitle(title: string): IndexTitle {
     // tests prefixed with task number: "01 title"
-    let indexString = title.match(/^[0-9]+/);
+    const indexString = title.match(/^[0-9]+/);
     if (!indexString) {
       throw 'Tests should begin with a number, indicating the task number';
     }

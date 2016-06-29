@@ -3,11 +3,7 @@ import runnerProcess from './runner-process';
 import writeTest from './write-test';
 import {parseLog} from 'process-console-log';
 
-export default function runner(
-  testString: string,
-  config: CR.Config,
-  handleResult: (result) => CR.TestResult
-) {
+export default function runner({testString, config, handleResult}) {
   // write tests to file
   writeTest(testString);
   // run tests on file
@@ -25,10 +21,8 @@ export default function runner(
 
       if (!match) {
         try {
-          // console.log(data);
           parseLog(data);
         } catch (e) {
-          // console.log(data);
           parseLog(data);
         }
         return;
@@ -38,19 +32,20 @@ export default function runner(
       // transform string result into object
       let resultString = data.substring(match.index + signal.length);
       let result = JSON.parse(JSON.stringify(resultString));
-      // why parse twice? I don't know, but it works
+      // why parse twice? it works
       if (typeof result === 'string') {
         result = JSON.parse(result);
       }
 
-      if (result.pass) {
-        // pass
-        final = result.passes[result.passes.length - 1];
-      } else if (result.pass === false) {
-        // fail: return first failure
-        final = result.failures[0];
-      } else {
-        console.log('error processing result: ', result);
+      switch (result.pass) {
+        case true:
+          final = result.passes[result.passes.length - 1];
+          break;
+        case false:
+          final = result.failures[0];
+          break;
+        default:
+          console.log('error processing result: ', result);
       }
 
       final.change = final.taskPosition - config.taskPosition;
