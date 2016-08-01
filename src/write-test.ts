@@ -1,10 +1,12 @@
 import {writeFileSync} from 'fs';
 import {logger} from 'process-console-log';
+import exists from './exists';
 import {testPath} from './constants';
 
-export default function writeTest(output: string) {
+export default function writeTest(config, testString: string) {
+
   // append logger
-  output = logger + output;
+  const output = logger + exists(config.dir) + testString;
   // write test file
   writeFileSync(testPath, output, 'utf8');
 }

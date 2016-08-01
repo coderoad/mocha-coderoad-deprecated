@@ -5,7 +5,7 @@ import {parseLog} from 'process-console-log';
 
 export default function runner({testString, config, handleResult}) {
   // write tests to file
-  writeTest(testString);
+  writeTest(config, testString);
   // run tests on file
   const runner = runnerProcess(config);
 
