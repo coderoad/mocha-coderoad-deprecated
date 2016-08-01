@@ -10,6 +10,9 @@ export default function runner({testString, config, handleResult}) {
   const runner = runnerProcess(config);
 
   var final = null;
+
+  // take code after the signal to avoid confusing console.log statements
+  // with test output
   const signalMatch = new RegExp(signal);
 
   return new Promise(function run(resolve, reject) {

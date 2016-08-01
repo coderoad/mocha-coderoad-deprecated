@@ -1,4 +1,3 @@
-
 // checks if file exists from cwd
 // appends this function to the top of the tests
 // require('node-file-exists')(require('path').;
