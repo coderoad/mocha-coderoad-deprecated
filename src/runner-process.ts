@@ -41,7 +41,8 @@ export default function runnerProcess(config: CR.Config) {
     ATOM_SHELL_INTERNAL_RUN_AS_NODE: 1,
     DIR: config.dir,
     TUTORIAL_DIR: config.dir,
-    TASK_POSITION: config.taskPosition
+    TASK_POSITION: config.taskPosition,
+    NODE_PATH: join(config.dir, 'node_modules'),
   });
 
   // spawn child process calling mocha test runner
