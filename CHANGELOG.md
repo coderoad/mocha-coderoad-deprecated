@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.10.0] - 2016-08-06
+- handle JS imports relative to project directory
+
 ## [0.9.3] - 2016-08-01
 - add "exists" global file path checker
 - upgrade to mocha@3.0.0

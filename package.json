@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/coderoad/mocha-coderoad#readme",
   "dependencies": {
-    "mocha": "^3.0.0",
+    "mocha": "^3.0.1",
     "node-file-exists": "^1.1.0",
     "process-console-log": "^0.2.2",
     "typescript": "^1.8.10"

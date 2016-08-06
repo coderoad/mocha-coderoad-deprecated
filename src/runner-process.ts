@@ -52,6 +52,7 @@ export default function runnerProcess(config: CR.Config) {
     '--bail',
     '--harmony',
     '--no-colors',
+    '--timeout=3000',
     `--reporter=${join(__dirname, 'reporter.js')}`,
     testPath
 

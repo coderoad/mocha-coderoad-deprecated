@@ -17,6 +17,7 @@
     "files": [
         "src/constants.ts",
         "src/exists.ts",
+        "src/import-paths.ts",
         "src/index.ts",
         "src/reporter.ts",
         "src/runner-process.ts",
