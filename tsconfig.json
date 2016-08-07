@@ -12,17 +12,19 @@
     "buildOnSave": true,
     "filesGlob": [
         "src/*.ts",
+        "src/**/*.ts",
         "src/typings/**/*.d.ts"
     ],
     "files": [
-        "src/compiler.ts",
-        "src/constants.ts",
-        "src/exists.ts",
-        "src/import-paths.ts",
         "src/index.ts",
-        "src/reporter.ts",
-        "src/runner-process.ts",
-        "src/write-test.ts",
+        "src/testPath.ts",
+        "src/reporter/index.ts",
+        "src/runner/constants.ts",
+        "src/runner/index.ts",
+        "src/runner/paths/mocha.ts",
+        "src/runner/paths/node.ts",
+        "src/runner/runner-process.ts",
+        "src/runner/start-runner.ts",
         "src/typings/chai/chai.d.ts",
         "src/typings/cr/cr.d.ts",
         "src/typings/cr/globals.d.ts",
@@ -31,7 +33,13 @@
         "src/typings/node-file-exists/node-file-exists.d.ts",
         "src/typings/node/node.d.ts",
         "src/typings/process-console-log/index.d.ts",
-        "src/typings/tsd.d.ts"
+        "src/typings/set/set.d.ts",
+        "src/typings/tsd.d.ts",
+        "src/writeTests/compiler.ts",
+        "src/writeTests/helpers/babel-register.ts",
+        "src/writeTests/helpers/exists.ts",
+        "src/writeTests/import-paths.ts",
+        "src/writeTests/index.ts"
     ],
     "exclude": [
         "node_modules"
