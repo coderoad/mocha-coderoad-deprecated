@@ -53,6 +53,7 @@ export default function runnerProcess(config: CR.Config) {
     '--harmony',
     '--no-colors',
     '--timeout=3000',
+    '--require babelhook',
     `--reporter=${join(__dirname, 'reporter.js')}`,
     testPath
 

@@ -15,6 +15,7 @@
         "src/typings/**/*.d.ts"
     ],
     "files": [
+        "src/compiler.ts",
         "src/constants.ts",
         "src/exists.ts",
         "src/import-paths.ts",

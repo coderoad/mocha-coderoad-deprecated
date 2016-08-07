@@ -9,7 +9,7 @@ import { join } from 'path';
 const importPathRegex = /require\(["'](.+)["']\);?$|^import.+from\s?["'](.+)["'];?$/;
 const relativePathRegex = /^\./;
 
-export default function fixImportPaths(str: string): string {
+export default function fixImportPaths(dir: string, str: string): string {
   return str.split('\n').map(line => {
     const isMatch = line.match(importPathRegex);
     if (!isMatch) {
@@ -21,7 +21,7 @@ export default function fixImportPaths(str: string): string {
     // // relative path
     if (importPath.match(relativePathRegex)) {
       // process.env.DIR
-      return line.replace(importPath, join(process.env.DIR, importPath));
+      return line.replace(importPath, join(dir, importPath));
     }
 		// no match, return line
     return line;

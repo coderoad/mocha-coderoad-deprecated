@@ -2,30 +2,32 @@
   "name": "mocha-coderoad",
   "version": "0.9.3",
   "description": "mocha test runner & reporter for atom-coderoad",
-  "main": "lib/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "keywords": [
+    "coderoad",
+    "mocha"
+  ],
+  "homepage": "https://github.com/coderoad/mocha-coderoad#readme",
+  "bugs": {
+    "url": "https://github.com/coderoad/mocha-coderoad/issues"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/coderoad/mocha-coderoad.git"
-  },
+  "license": "ISC",
+  "author": "Shawn McKay <shawn.j.mckay@gmail.com>",
   "files": [
     "lib",
     "package.json",
     "*.md"
   ],
-  "keywords": [
-    "coderoad",
-    "mocha"
-  ],
-  "author": "Shawn McKay <shawn.j.mckay@gmail.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/coderoad/mocha-coderoad/issues"
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coderoad/mocha-coderoad.git"
   },
-  "homepage": "https://github.com/coderoad/mocha-coderoad#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.11.5",
+    "babel-register": "^6.11.6",
     "mocha": "^3.0.1",
     "node-file-exists": "^1.1.0",
     "process-console-log": "^0.2.2",
