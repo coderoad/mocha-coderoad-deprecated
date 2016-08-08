@@ -13,7 +13,7 @@ export default function fixImportPaths(dir: string, str: string): string {
   // collect import lines
   let entries = new Set([]);
 
-  let arr = str.split('\n').map(line => {
+  return str.split('\n').map(line => {
     // line has an import or require ?
     const isMatch = line.match(importPathRegex);
     if (!isMatch) {
@@ -23,22 +23,18 @@ export default function fixImportPaths(dir: string, str: string): string {
     const importPath = isMatch[1] || isMatch[2];
     // import path: may be relative or absolute
 
-    // relative path
+    // is a relative path
     if (importPath.match(relativePathRegex)) {
-
       let newPath = join(dir, importPath.replace('BASE', ''));
-
+      let newLine = line.replace(importPath, newPath);
       // add to map of entry files
-      entries.add(line.replace(importPath, newPath));
+      if (!entries.has(newLine)) {
+        entries.add(newLine);
+        return newLine;
+      }
       return '';
     }
 		// no match, return line
     return line;
-  });
-  // prepend import paths to output
-  return (
-    Array.from(entries.keys())
-    .concat(arr)
-    .join('\n')
-  );
+  }).join('\n');
 }

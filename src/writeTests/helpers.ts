@@ -9,5 +9,6 @@ export default function helpers(projectDir) {
 
   // overwrite require to catch globals in tests
   require = require('rewire');
-  `;
+
+`;
 }
