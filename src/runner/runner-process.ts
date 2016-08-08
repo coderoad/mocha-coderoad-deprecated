@@ -32,7 +32,7 @@ export default function spawnRunnerProcess({dir, taskPosition, testPath}) {
     '--harmony', // es6 features
     '--no-colors',
     '--timeout=3000',
-    '--require babelhook', // for import/export of modules
+    '--compilers js:babel-core/register', // for import/export of modules
     `--reporter=${reporterPath}`, // test feedback
     testPath, // unit tests
   ], options);

@@ -1,13 +1,13 @@
 import {parseLog} from 'process-console-log';
 import {signal} from '../constants';
 
-export default function startRunner(runner, handleResult) {
+// take code after the signal to avoid confusing console.log statements
+// with test output
+const signalMatch = new RegExp(signal);
+
+export default function startRunner({runner, handleResult, taskPosition}) {
 
   var final = null;
-
-  // take code after the signal to avoid confusing console.log statements
-  // with test output
-  const signalMatch = new RegExp(signal);
 
   new Promise(function run(resolve, reject) {
 
@@ -45,7 +45,7 @@ export default function startRunner(runner, handleResult) {
         console.log('error processing result: ', result);
       }
 
-      final.change = final.taskPosition - config.taskPosition;
+      final.change = final.taskPosition - taskPosition;
       final.pass = final.change > 0;
       final.completed = result.pass;
 

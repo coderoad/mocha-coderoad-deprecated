@@ -26,12 +26,14 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "babel-core": "^6.13.2",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.11.5",
+    "babel-preset-es2015": "^6.13.2",
     "babel-register": "^6.11.6",
     "mocha": "^3.0.1",
     "node-file-exists": "^1.1.0",
     "process-console-log": "^0.2.2",
-    "typescript": "^1.8.10"
+    "rewire": "https://github.com/ShMcK/rewire.git"
   },
   "devDependencies": {
     "chai": "^3.5.0",
