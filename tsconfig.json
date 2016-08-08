@@ -35,8 +35,8 @@
         "src/typings/process-console-log/index.d.ts",
         "src/typings/set/set.d.ts",
         "src/typings/tsd.d.ts",
-        "src/writeTests/compiler.ts",
         "src/writeTests/helpers/babel-register.ts",
+        "src/writeTests/helpers/compiler.ts",
         "src/writeTests/helpers/exists.ts",
         "src/writeTests/import-paths.ts",
         "src/writeTests/index.ts"

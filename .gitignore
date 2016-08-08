@@ -1,4 +1,4 @@
 node_modules
 src/*.js
 test/**/*.ts
-lib/.tmp.js
+.tmp/

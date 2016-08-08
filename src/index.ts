@@ -6,17 +6,17 @@ let settings: CombineTestsOptions = {
   dir: null,
   tutorial: null,
   tests: '',
-  step: 0,
+  pagePosition: 0,
   testPath: '',
 };
 
-export const combineTests = (options: CombineTestsOptions) => {
+export function load(options: CombineTestsOptions) {
   options.testPath = getTestPath(options);
   settings = Object.assign(settings, options);
   writeTests(options);
 };
 
-export default function start({ taskPosition, handleResult }) {
+export function run({ taskPosition, handleResult }) {
   const { dir } = settings;
   runner({
     dir,
