@@ -1,5 +1,5 @@
 import {parseLog} from 'process-console-log';
-import {signal} from './constants';
+import {signal} from '../constants';
 
 export default function startRunner(runner, handleResult) {
 

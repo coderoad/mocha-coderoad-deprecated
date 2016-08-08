@@ -3,7 +3,9 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [0.10.0] - 2016-08-06
-- handle JS imports relative to project directory
+- break test runner into two parts:
+  - load - called when a new page is set, prepares a test file
+  - run - called on test run, compiles the test file with user code
 
 ## [0.9.3] - 2016-08-01
 - add "exists" global file path checker

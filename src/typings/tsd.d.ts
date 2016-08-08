@@ -13,6 +13,6 @@ interface CombineTestsOptions {
     version: string;
   };
   tests: string;
-  pagePosition: number;
   testPath: string;
+  testFile?: string;
 }

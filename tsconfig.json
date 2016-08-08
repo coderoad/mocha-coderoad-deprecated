@@ -16,10 +16,10 @@
         "src/typings/**/*.d.ts"
     ],
     "files": [
+        "src/constants.ts",
         "src/index.ts",
         "src/testPath.ts",
         "src/reporter/index.ts",
-        "src/runner/constants.ts",
         "src/runner/index.ts",
         "src/runner/paths/mocha.ts",
         "src/runner/paths/node.ts",

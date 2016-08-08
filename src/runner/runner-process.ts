@@ -4,7 +4,7 @@ import {spawn} from 'child_process';
 import getMocha from './paths/mocha';
 import getNode from './paths/node';
 
-const reporterPath = join(__dirname, '..', 'reporter', 'reporter.js');
+const reporterPath = join(__dirname, '..', 'reporter', 'index.js');
 const node = getNode();
 const mocha = getMocha();
 

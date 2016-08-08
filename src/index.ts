@@ -2,25 +2,19 @@ import writeTests from './writeTests';
 import runner from './runner';
 import getTestPath from './testPath';
 
-let settings: CombineTestsOptions = {
-  dir: null,
-  tutorial: null,
-  tests: '',
-  pagePosition: 0,
-  testPath: '',
+export function load({ dir, testFile, tests }) {
+  writeTests({
+    dir,
+    tests,
+    testPath: getTestPath(testFile),
+  });
 };
 
-export function load(options: CombineTestsOptions) {
-  options.testPath = getTestPath(options);
-  settings = Object.assign(settings, options);
-  writeTests(options);
-};
-
-export function run({ taskPosition, handleResult }) {
-  const { dir } = settings;
+export function run({ dir, taskPosition, handleResult, testFile }) {
   runner({
     dir,
     taskPosition,
     handleResult,
+    testPath: getTestPath(testFile),
   });
 }

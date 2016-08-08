@@ -1,4 +1,4 @@
-import {signal} from '../helpers/constants';
+import {signal} from '../constants';
 
 exports = module.exports = reporter;
 function reporter(runner) {
@@ -34,22 +34,21 @@ function reporter(runner) {
     // anything before the signal will be captured as log
     process.stdout.write(signal + JSON.stringify(result, null, 2));
   });
+}
 
-  interface IndexTitle {
-    index: number;
-    msg: string;
+interface IndexTitle {
+  index: number;
+  msg: string;
+}
+
+function getIndexAndTitle(title: string): IndexTitle {
+  // tests prefixed with task number: "01 title"
+  const indexString = title.match(/^[0-9]+/);
+  if (!indexString) {
+    throw 'Tests should begin with a number, indicating the task number';
   }
-
-  function getIndexAndTitle(title: string): IndexTitle {
-    // tests prefixed with task number: "01 title"
-    const indexString = title.match(/^[0-9]+/);
-    if (!indexString) {
-      throw 'Tests should begin with a number, indicating the task number';
-    }
-    return {
-      index: parseInt(indexString[0], 10),
-      msg: title.slice(indexString[0].length + 1),
-    };
-  }
-
+  return {
+    index: parseInt(indexString[0], 10),
+    msg: title.slice(indexString[0].length + 1),
+  };
 }
