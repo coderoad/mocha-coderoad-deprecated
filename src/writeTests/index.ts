@@ -1,10 +1,7 @@
 import {writeFile} from 'fs';
 import {logger} from 'process-console-log';
 import importPaths from './import-paths';
-import exists from './helpers/exists';
-// import compiler from './compiler';
-import babelRegister from './helpers/babel-register';
-import rewire from './helpers/rewire';
+import helpers from './helpers';
 
 export default function writeTest({ dir, tests, testPath }) {
 
@@ -13,14 +10,12 @@ export default function writeTest({ dir, tests, testPath }) {
   // const compiled = compiler(fixImports);
 
   const output = '(function(){\n'
-      // babel hook to handle import / export in other files
-      .concat('// run time compiler\n' + babelRegister)
       // append logger for capturing log values and types
-      .concat('// override console.log\n' + logger)
-      // exists polyfill for file/folder exists checks
-      .concat('// file exists function\n' + exists(dir))
-      // allow access to module globals
-      .concat('// rewire\n' + rewire)
+      .concat(logger)
+      // 1. babel hook to handle import / export in other files
+      // 2. exists polyfill for file/folder exists checks
+      // 3. allow access to module globals
+      .concat(helpers(dir))
       // fixed imports
       .concat(fixImports)
       .concat('\n}());');
