@@ -26,15 +26,15 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.11.5",
-    "babel-register": "^6.11.6",
-    "mocha": "^3.0.1",
-    "node-file-exists": "^1.1.0",
-    "process-console-log": "^0.2.2",
+    "babel-plugin-transform-es2015-modules-commonjs": "6.11.5",
+    "babel-register": "6.11.6",
+    "mocha": "3.0.2",
+    "node-file-exists": "1.1.0",
+    "process-console-log": "0.2.2",
     "rewire": "https://github.com/ShMcK/rewire.git"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "chai-spies": "^0.7.1"
+    "chai": "3.5.0",
+    "chai-spies": "0.7.1"
   }
 }

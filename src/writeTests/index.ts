@@ -9,7 +9,7 @@ export default function writeTest({ dir, tests, testPath }) {
   const fixImports = importPaths(dir, tests);
   // const compiled = compiler(fixImports);
 
-  const output = '(function(){\n'
+  const output = `(function(){\n'use strict';\n`
       // append logger for capturing log values and types
       .concat(logger)
       // 1. babel hook to handle import / export in other files
