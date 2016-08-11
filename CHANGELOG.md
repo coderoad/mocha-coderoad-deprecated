@@ -8,6 +8,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
   - run - called on test run, compiles the test file with user code
 - use modified "rewire" for running tests on globals
 - handle `import`/`export` using "babel-plugin-transform-es2015-modules-commonjs"
+- capture imports and globals for testing using `rewire-coderoad`
 
 ## [0.9.3] - 2016-08-01
 - add "exists" global file path checker

@@ -52,7 +52,7 @@ Here are examples using *mocha* with *chai*'s *expect*. See the [docs](http://ch
 
 ```js
 it('doesn\'t exist', function() {
-    expect(target).to.be.defined;
+    expect(target).to.not.be.undefined;
 });
 ```
 

@@ -31,7 +31,7 @@
     "mocha": "3.0.2",
     "node-file-exists": "1.1.0",
     "process-console-log": "0.2.2",
-    "rewire": "https://github.com/ShMcK/rewire.git"
+    "rewire-coderoad": "3.0.0"
   },
   "devDependencies": {
     "chai": "3.5.0",
