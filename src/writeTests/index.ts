@@ -1,7 +1,10 @@
-import {writeFile} from 'fs';
-import {logger} from 'process-console-log';
+import * as fs from 'fs';
+import { join } from 'path';
+import { logger } from 'process-console-log';
 import importPaths from './import-paths';
 import helpers from './helpers';
+
+const tmpPath = join(__dirname, '..', '..', '.tmp');
 
 export default function writeTest({ dir, tests, testPath }) {
 
@@ -20,9 +23,17 @@ export default function writeTest({ dir, tests, testPath }) {
       .concat(fixImports)
       .concat('\n}());');
 
+  writeTestFile(testPath, output);
+}
+
+function writeTestFile(testPath: string, output: string) {
+  // create .tmp directory if doesn't exist
+  if (!fs.existsSync(tmpPath)) {
+    fs.mkdirSync(tmpPath);
+  }
   return new Promise((resolve, reject) => {
 		// write test file
-    writeFile(testPath, output, (err) => {
+    fs.writeFile(testPath, output, (err) => {
       if (err) { reject(err); }
       resolve();
     });
