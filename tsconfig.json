@@ -35,8 +35,6 @@
         "src/typings/process-console-log/index.d.ts",
         "src/typings/set/set.d.ts",
         "src/typings/tsd.d.ts",
-        "src/writeTests/helpers.ts",
-        "src/writeTests/import-paths.ts",
         "src/writeTests/index.ts"
     ],
     "exclude": [
