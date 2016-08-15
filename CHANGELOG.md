@@ -2,13 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [0.10.0] - 2016-08-08
+## [0.10.0] - 2016-08-14
 - break test runner into two parts:
   - load - called when a new page is set, prepares a test file
   - run - called on test run, compiles the test file with user code
-- use modified "rewire" for running tests on globals
-- handle `import`/`export` using "babel-plugin-transform-es2015-modules-commonjs"
-- capture imports and globals for testing using `rewire-coderoad`
+- create ["js-coderoad"](https://github.com/coderoad/js-coderoad) package for js specific test features
 
 ## [0.9.3] - 2016-08-01
 - add "exists" global file path checker
