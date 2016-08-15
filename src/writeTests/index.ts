@@ -4,23 +4,20 @@ import { logger } from 'process-console-log';
 import importPaths from './import-paths';
 import helpers from './helpers';
 
+// store compiled tests in mocha-coderoad/.tmp
 const tmpPath = join(__dirname, '..', '..', '.tmp');
 
 export default function writeTest({ dir, tests, testPath }) {
 
-  // fix import paths relative to project dir instead of test runner
-  const fixImports = importPaths(dir, tests);
-  // const compiled = compiler(fixImports);
-
-  const output = `(function(){\n'use strict';\n`
+  const output = `(function(){\n`
       // append logger for capturing log values and types
       .concat(logger)
       // 1. babel hook to handle import / export in other files
       // 2. exists polyfill for file/folder exists checks
       // 3. allow access to module globals
       .concat(helpers(dir))
-      // fixed imports
-      .concat(fixImports)
+      // fix import paths relative to project dir instead of test runner
+      .concat(importPaths(dir, tests))
       .concat('\n}());');
 
   writeTestFile(testPath, output);

@@ -6,7 +6,8 @@ import { join } from 'path';
 */
 
 // import or require statement
-const importPathRegex = /require\(["'](BASE.+)["']\);?$|^import.+?\s?["'](BASE.+)["'];?$/;
+const importPathRegex =
+ /require\(["'](BASE.+)["']\)([a-zA-Z0-9\-\_]+)?|^import.+?\s?["'](BASE.+)["'];?$/m;
 const relativePathRegex = /^BASE/;
 
 export default function fixImportPaths(dir: string, str: string): string {
