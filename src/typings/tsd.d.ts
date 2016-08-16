@@ -16,3 +16,5 @@ interface CombineTestsOptions {
   testPath: string;
   testFile?: string;
 }
+
+declare module 'js-coderoad';

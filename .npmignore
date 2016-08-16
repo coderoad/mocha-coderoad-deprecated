@@ -1,6 +1,5 @@
 snippets.cson
 test
 src
-src/typings
 tsconfig.json
 tslint.json
