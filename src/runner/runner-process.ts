@@ -1,5 +1,5 @@
-import {join} from 'path';
-import {spawn} from 'child_process';
+import { join } from 'path';
+import { spawn } from 'child_process';
 
 import getMocha from './paths/mocha';
 import getNode from './paths/node';

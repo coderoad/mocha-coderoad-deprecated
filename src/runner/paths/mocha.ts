@@ -1,5 +1,5 @@
 import fileExists from 'node-file-exists';
-import {join} from 'path';
+import { join } from 'path';
 
 export default function getMocha(): string {
   // mocha, location may differ based on NPM version

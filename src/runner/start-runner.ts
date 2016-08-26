@@ -1,5 +1,5 @@
-import {parseLog} from 'process-console-log';
-import {signal} from '../constants';
+import { parseLog } from 'process-console-log';
+import { signal } from '../constants';
 
 // take code after the signal to avoid confusing console.log statements
 // with test output

@@ -1,4 +1,4 @@
-import {signal} from '../constants';
+import { signal } from '../constants';
 
 exports = module.exports = reporter;
 function reporter(runner) {
