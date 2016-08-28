@@ -26,7 +26,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "js-coderoad": "^0.1.3",
+    "js-coderoad": "^0.1.4",
     "mocha": "^3.0.2",
     "node-file-exists": "1.1.0"
   },
