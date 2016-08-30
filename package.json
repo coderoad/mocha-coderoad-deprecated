@@ -1,6 +1,6 @@
 {
   "name": "mocha-coderoad",
-  "version": "0.10.2",
+  "version": "0.10.3",
   "description": "mocha test runner & reporter for atom-coderoad",
   "keywords": [
     "coderoad",
@@ -26,7 +26,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "js-coderoad": "^0.1.4",
+    "js-coderoad": "^0.2.1",
     "mocha": "^3.0.2",
     "node-file-exists": "1.1.0"
   },
