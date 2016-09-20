@@ -1,3 +1,8 @@
+node_modules
+src/*.js
+test/**/*.ts
+.tmp/*.js
+
 snippets.cson
 test
 src
