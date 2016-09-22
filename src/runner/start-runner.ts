@@ -20,6 +20,7 @@ export default function startRunner({runner, handleResult, taskPosition}) {
         try {
           parseLog(data);
         } catch (e) {
+          final.error = true;
           parseLog(data);
         }
         return;
