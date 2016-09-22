@@ -1,10 +1,11 @@
 {
   "name": "mocha-coderoad",
-  "version": "0.10.3",
+  "version": "0.10.4",
   "description": "mocha test runner & reporter for atom-coderoad",
   "keywords": [
     "coderoad",
-    "mocha"
+    "mocha",
+    "test runner"
   ],
   "homepage": "https://github.com/coderoad/mocha-coderoad#readme",
   "bugs": {

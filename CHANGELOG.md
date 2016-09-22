@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.10.4] - 2016-09-21
+- on error, mark the error as true
+
 ## [0.10.0] - 2016-08-14
 - break test runner into two parts:
   - load - called when a new page is set, prepares a test file
