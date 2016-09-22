@@ -1,12 +1,12 @@
 import { join } from 'path';
 import { spawn } from 'child_process';
 
-import getMocha from './paths/mocha';
+import { runnerOptions } from '../constants';
+import getRunner from './paths/runner';
 import getNode from './paths/node';
 
-const reporterPath = join(__dirname, '..', 'reporter', 'index.js');
 const node = getNode();
-const mocha = getMocha();
+const runner = getRunner();
 
 export default function spawnRunnerProcess({dir, taskPosition, testPath}) {
   // node electron setup
@@ -25,15 +25,8 @@ export default function spawnRunnerProcess({dir, taskPosition, testPath}) {
   });
 
   // spawn child process calling mocha test runner
-  return spawn(node, [
-    // into shared node_modules directory
-    mocha,
-    '--bail', // quit on first fail
-    '--harmony', // es6 features
-    '--no-colors',
-    '--timeout=3000',
-    '--compilers js:babel-register', // for import/export of modules
-    `--reporter=${reporterPath}`, // test feedback
-    testPath, // unit tests
-  ], options);
+  return spawn(node, [runner]
+    .concat(runnerOptions)
+    .concat(testPath) // unit tests
+  , options);
 }

@@ -21,7 +21,7 @@
         "src/testPath.ts",
         "src/reporter/index.ts",
         "src/runner/index.ts",
-        "src/runner/paths/mocha.ts",
+        "src/runner/paths/runner.ts",
         "src/runner/paths/node.ts",
         "src/runner/runner-process.ts",
         "src/runner/start-runner.ts",
